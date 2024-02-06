@@ -99,6 +99,7 @@
         "args": {
             "commands": [
                 "cursorDownSelect",
+                "cursorEndSelect",
                 "cursorEndSelect"
             ]
         },
@@ -124,6 +125,7 @@
         "args": {
             "commands": [
                 "cursorUpSelect",
+                "cursorHomeSelect",
                 "cursorHomeSelect"
             ]
         },
