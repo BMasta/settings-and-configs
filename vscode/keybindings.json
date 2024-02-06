@@ -1,0 +1,133 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quickOpenNavigateNextInViewPicker",
+        "when": "inQuickOpen && inViewsPicker"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quickOpenView"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "editor.foldLevel1",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+k ctrl+1",
+        "command": "-editor.foldLevel1",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+shift+q",
+        "command": "-workbench.action.quickOpenNavigatePreviousInViewPicker",
+        "when": "inQuickOpen && inViewsPicker"
+    },
+    {
+        "key": "ctrl+shift+q",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+k ctrl+j",
+        "command": "-editor.unfoldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "f1",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "f1",
+        "command": "workbench.action.toggleZenMode",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+k z",
+        "command": "-workbench.action.toggleZenMode",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "f1",
+        "command": "workbench.action.exitZenMode",
+        "when": "inZenMode"
+    },
+    {
+        "key": "escape escape",
+        "command": "-workbench.action.exitZenMode",
+        "when": "inZenMode"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-expandLineSelection",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+d",
+        "command": "-workbench.view.debug",
+        "when": "viewContainer.workbench.view.debug.enabled"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "-cursorDownSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "-cursorUpSelect",
+        "when": "textInputFocus"
+    },
+    //-- custom line selection similar to vim's line visual mode --//
+    {
+        "command": "runCommands",
+        "key": "ctrl+shift+down",
+        "args": {
+            "commands": [
+                "cursorEnd",
+                "cursorHome",
+                "cursorHome",
+                "cursorEndSelect",
+                "cursorEndSelect"
+            ]
+        },
+        "when": "editorTextFocus && !editorHasSelection"
+    },
+    {
+        "command": "runCommands",
+        "key": "ctrl+shift+down",
+        "args": {
+            "commands": [
+                "cursorDownSelect",
+                "cursorEndSelect"
+            ]
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    {
+        "command": "runCommands",
+        "key": "ctrl+shift+up",
+        "args": {
+            "commands": [
+                "cursorHome",
+                "cursorEnd",
+                "cursorEnd",
+                "cursorHomeSelect",
+                "cursorHomeSelect"
+            ]
+        },
+        "when": "editorTextFocus && !editorHasSelection"
+    },
+    {
+        "command": "runCommands",
+        "key": "ctrl+shift+up",
+        "args": {
+            "commands": [
+                "cursorUpSelect",
+                "cursorHomeSelect"
+            ]
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    //-------------------------------------------------------------//
+]
