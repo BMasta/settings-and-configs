@@ -1,3 +1,38 @@
 {
     "workbench.colorTheme": "Default Dark Modern"
+    "editor.minimap.enabled": false,
+    "telemetry.telemetryLevel": "off",
+
+    "editor.rulers": [
+        79,
+        99
+    ],
+    
+    "zenMode.centerLayout": true,
+    "zenMode.fullScreen": true,
+    "zenMode.hideStatusBar": true,
+    "zenMode.hideActivityBar": true,
+    "zenMode.showTabs": "none",
+    "zenMode.hideLineNumbers": false,
+    "zenMode.restore": false,
+    
+    // "terminal.integrated.fontFamily": "'CommitMono Nerd Font Mono'",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.fontWeight": "100",
+    "terminal.integrated.fontWeightBold": "100",
+    "terminal.integrated.hideOnStartup": "always",
+    "terminal.integrated.lineHeight": 1.2,
+    "terminal.integrated.tabs.focusMode": "singleClick",
+    "terminal.integrated.tabs.hideCondition": "singleGroup",
+    "terminal.integrated.shellIntegration.decorationsEnabled": "overviewRuler",
+    "workbench.activityBar.location": "hidden",
+    "accessibility.verbosity.terminal": false,
+    "terminal.integrated.shellIntegration.enabled": false,
+
+    // AutoHide extension
+    // "autoHide.autoHideAuxiliaryBar": false,
+    // "autoHide.autoHideSideBar": false,
+    // "autoHide.hideOnOpen": true,
+    // "autoHide.panelDelay": 0,
 }
