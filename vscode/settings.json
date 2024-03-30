@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Default Dark Modern"
+    "workbench.colorTheme": "Default Dark Modern",
     "editor.minimap.enabled": false,
     "telemetry.telemetryLevel": "off",
 
@@ -28,11 +28,22 @@
     "terminal.integrated.shellIntegration.decorationsEnabled": "overviewRuler",
     "workbench.activityBar.location": "hidden",
     "accessibility.verbosity.terminal": false,
-    "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.shellIntegration.enabled": true,
 
     // AutoHide extension
     // "autoHide.autoHideAuxiliaryBar": false,
     // "autoHide.autoHideSideBar": false,
     // "autoHide.hideOnOpen": true,
     // "autoHide.panelDelay": 0,
+
+    "editor.cursorSurroundingLinesStyle": "default",
+    "editor.cursorSurroundingLines": 3,
+
+    // Apc Customize UI++ extension
+    // "window.titleBarStyle": "native",
+    // "apc.electron": {
+    //     "titleBarStyle": "hidden",
+    //   },
+    // "window.customTitleBarVisibility": "never",
+    // "workbench.editor.closeEmptyGroups": false,
 }
