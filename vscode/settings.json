@@ -30,6 +30,14 @@
     "accessibility.verbosity.terminal": false,
     "terminal.integrated.shellIntegration.enabled": true,
 
+    "editor.find.cursorMoveOnType": false,
+    "editor.selectionHighlight": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.guides.highlightActiveBracketPair": false,
+    "editor.guides.highlightActiveIndentation": false,
+    "editor.matchBrackets": "never",
+    "editor.hideCursorInOverviewRuler": true
+
     // AutoHide extension
     // "autoHide.autoHideAuxiliaryBar": false,
     // "autoHide.autoHideSideBar": false,
@@ -46,4 +54,8 @@
     //   },
     // "window.customTitleBarVisibility": "never",
     // "workbench.editor.closeEmptyGroups": false,
+
+    // these settings are used as state for folding keybindings
+    // "workbench.editor.limit.value": 100,
+    // "editor.multiCursorLimit": 100
 }
