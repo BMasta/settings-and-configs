@@ -38,18 +38,31 @@
         "command": "-workbench.action.showCommands"
     },
     {
-        "key": "f1",
-        "command": "workbench.action.toggleZenMode",
-        "when": "!isAuxiliaryWindowFocusedContext"
-    },
-    {
         "key": "ctrl+k z",
         "command": "-workbench.action.toggleZenMode",
         "when": "!isAuxiliaryWindowFocusedContext"
     },
     {
         "key": "ctrl+q",
-        "command": "editor.foldLevel1",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "editor.foldAllExcept",
+                "editor.unfoldRecursively",
+                {
+                    "command": "toggle",
+                    "args": {
+                        "id": "customFolding",
+                        "value": [
+                            {
+                                // use setting to store folding state (hack)
+                                "workbench.editor.limit.value": 100
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "when": "editorTextFocus && foldingEnabled"
     },
     {
@@ -59,8 +72,47 @@
     },
     {
         "key": "ctrl+shift+q",
-        "command": "editor.unfoldAll",
-        "when": "editorTextFocus && foldingEnabled"
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "editor.unfoldAll",
+                {
+                    "command": "toggle",
+                    "args": {
+                        "id": "customFolding",
+                        "value": [
+                            {
+                                // use setting to store folding state (hack)
+                                "workbench.editor.limit.value": 100
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "when": "editorTextFocus && foldingEnabled && config.workbench.editor.limit.value != 100"
+    },
+    {
+        "key": "ctrl+shift+q",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "editor.foldAll",
+                {
+                    "command": "toggle",
+                    "args": {
+                        "id": "customFolding",
+                        "value": [
+                            {
+                                // use setting to store folding state (hack)
+                                "workbench.editor.limit.value": 101
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "when": "editorTextFocus && foldingEnabled && config.workbench.editor.limit.value == 100"
     },
     {
         "key": "ctrl+k ctrl+j",
@@ -166,29 +218,40 @@
         "command": "-scrollLineDown",
         "when": "textInputFocus"
     },
-
-    // Added manually
     {
         "key": "ctrl+up",
-        "command": "cursorMove",
+        "command": "runCommands",
         "args": {
-            "to": "up",
-            "by": "wrappedLine",
-            "value": 10
+            "commands": [
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "up",
+                        "by": "wrappedLine",
+                        "value": 10
+                    },
+                }
+            ]
         },
         "when": "editorTextFocus"
     },
     {
         "key": "ctrl+down",
-        "command": "cursorMove",
+        "command": "runCommands",
         "args": {
-            "to": "down",
-            "by": "wrappedLine",
-            "value": 10
+            "commands": [
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "down",
+                        "by": "wrappedLine",
+                        "value": 10
+                    }
+                }
+            ]
         },
         "when": "editorTextFocus"
     },
-
     
     //-- custom line selection similar to vim's line visual mode --//
     {
@@ -355,11 +418,49 @@
         },
         "when": "editorTextFocus && editorHasSelection"
     },
-    //-------------------------------------------------------------//
     {
         "key": "ctrl+space",
-        "command": "editor.toggleFold",
-        "when": "editorTextFocus && foldingEnabled"
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "editor.unfoldRecursively",
+                {
+                    "command": "toggle",
+                    "args": {
+                        "id": "customFolding2",
+                        "value": [
+                            {
+                                // use setting to store folding state (hack)
+                                "workbench.editor.limit.value": 100
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "when": "editorTextFocus && foldingEnabled && config.workbench.editor.limit.value != 100"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "editor.foldRecursively",
+                {
+                    "command": "toggle",
+                    "args": {
+                        "id": "customFolding2",
+                        "value": [
+                            {
+                                // use setting to store folding state (hack)
+                                "workbench.editor.limit.value": 101
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "when": "editorTextFocus && foldingEnabled && config.workbench.editor.limit.value == 100"
     },
     {
         "key": "ctrl+k ctrl+l",
@@ -515,6 +616,20 @@
         "when": "terminalFocus"
     },
     {
+        "key": "shift+up",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.copyLastCommandAndLastCommandOutput",
+                "workbench.action.closePanel",
+                "workbench.action.focusLastEditorGroup",
+                "workbench.action.files.newUntitledFile",
+                "editor.action.clipboardPasteAction"
+            ]
+        },
+        "when": "terminalFocus"
+    },
+    {
         "key": "ctrl+r",
         "command": "runCommands",
         "args": {
@@ -522,7 +637,7 @@
                 "workbench.action.terminal.runSelectedText",
             ]
         },
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && !replaceInputFocussed && !findInputFocussed"
     },
     {
         "key": "f1",
@@ -652,5 +767,78 @@
     {
         "key": "shift+alt+`",
         "command": "workbench.action.splitEditorToRightGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+i",
+        "command": "-editor.debug.action.showDebugHover",
+        "when": "editorTextFocus && inDebugMode"
+    },
+    {
+        "key": "ctrl+k ctrl+i",
+        "command": "-editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "-editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "enter",
+        "command": "-editor.action.replaceOne",
+        "when": "editorFocus && findWidgetVisible && replaceInputFocussed"
+    },
+    {
+        "key": "enter",
+        "command": "-editor.action.nextMatchFindAction",
+        "when": "editorFocus && findInputFocussed"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "editorFocus && (findInputFocussed || replaceInputFocussed)"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.files.save",
+        "when": "!findInputFocussed && !replaceInputFocussed"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "-workbench.action.files.save"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-editor.action.previousMatchFindAction",
+        "when": "editorFocus && findInputFocussed"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "!findInputFocussed && !replaceInputFocussed"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorFocus && (findInputFocussed || replaceInputFocussed)"
+    },
+    {
+        "key": "enter",
+        "command": "closeFindWidget",
+        "when": "editorFocus && (findInputFocussed || replaceInputFocussed)"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "editor.action.replaceOne",
+        "when": "editorFocus && replaceInputFocussed"
     }
 ]
